@@ -3,6 +3,7 @@ import { config } from "dotenv";
 config();
 import valide from "./utils/valide";
 import authRoutes from "./routes/auth.route";
+import messageRoutes from "./routes/message.route"
 import { connectDB } from "./libs/db";
 import { isHttpError } from "http-errors";
 import { Response, Request, NextFunction } from "express";
@@ -19,6 +20,7 @@ app.use(cookieParser());
 app.use(morgan("dev"));
 
 app.use("/api/auth", authRoutes);
+app.use("/api/message", messageRoutes);
 
 //handle http errors
 app.use((error: unknown, req: Request, res: Response, next: NextFunction) => {
