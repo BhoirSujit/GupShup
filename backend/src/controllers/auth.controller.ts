@@ -16,7 +16,12 @@ export const signup: RequestHandler = async (req, res, next) => {
       throw createHttpError(400, "password must be atleast 6 character long");
 
     //if user exists
-    const user = await userModel.findOne({ email });
+    let user = undefined;
+    try {
+      user = await userModel.findOne({ email });
+    } catch (error) {
+      console.log("mongo findone error: ", error)
+    }
     if (user) throw createHttpError(409, "email allready exists");
 
     //hash the password
