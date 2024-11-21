@@ -7,6 +7,7 @@ export const useAuthStore = create((set) => ({
   isSigningUp: false,
   isLoggingIn: false,
   isUpdatingPrfile: false,
+  onlineUsers: [],
   isCheckingAuth: true,
   checkAuth: async () => {
     try {
