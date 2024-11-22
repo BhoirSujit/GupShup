@@ -1,16 +1,16 @@
 import express from "express";
 import { config } from "dotenv";
 config();
-import valide from "./utils/valide";
-import authRoutes from "./routes/auth.route";
-import messageRoutes from "./routes/message.route";
-import { connectDB } from "./libs/db";
+import valide from "./utils/valide.js";
+import authRoutes from "./routes/auth.route.js";
+import messageRoutes from "./routes/message.route.js";
+import { connectDB } from "./libs/db.js";
 import { isHttpError } from "http-errors";
 import { Response, Request, NextFunction } from "express";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import {app, server} from "./libs/socket"
+import {app, server} from "./libs/socket.js"
 import path from "path";
 
 

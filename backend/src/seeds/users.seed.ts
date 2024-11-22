@@ -1,7 +1,7 @@
 import { config } from "dotenv";
 config();
-import { connectDB } from "../libs/db";
-import User from "../models/user.model";
+import { connectDB } from "../libs/db.js";
+import User from "../models/user.model.js";
 
 
 

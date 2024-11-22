@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken"
-import valide from "./valide"
+import valide from "./valide.js"
 import { Response } from "express";
 
 

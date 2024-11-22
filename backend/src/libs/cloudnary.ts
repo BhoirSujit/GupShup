@@ -1,5 +1,5 @@
 import { v2 as cloudnary } from "cloudinary";
-import valide from "../utils/valide";
+import valide from "../utils/valide.js";
 
 cloudnary.config({
   cloud_name: valide.CLOUDARY_CLOUD_NAME,

@@ -1,8 +1,8 @@
 import jwt, { decode, JwtPayload } from "jsonwebtoken";
-import userModel from "../models/user.model";
+import userModel from "../models/user.model.js";
 import { RequestHandler } from "express";
 import createHttpError from "http-errors";
-import valide from "../utils/valide";
+import valide from "../utils/valide.js";
 
 declare module "express-serve-static-core" {
     interface Request {

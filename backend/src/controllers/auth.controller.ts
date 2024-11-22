@@ -1,9 +1,9 @@
 import { RequestHandler } from "express";
 import createHttpError from "http-errors";
-import userModel from "../models/user.model";
+import userModel from "../models/user.model.js";
 import bcrypt from "bcryptjs";
-import { generateToken } from "../utils/token";
-import cloudnary from "../libs/cloudnary";
+import { generateToken } from "../utils/token.js";
+import cloudnary from "../libs/cloudnary.js";
 
 export const signup: RequestHandler = async (req, res, next) => {
   const { fullName, email, password } = req.body;

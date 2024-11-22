@@ -1,8 +1,8 @@
 import { RequestHandler } from "express";
-import userModel from "../models/user.model";
-import messageModel from "../models/message.model";
-import cloudnary from "../libs/cloudnary";
-import { getReceiverSocketId, io } from "../libs/socket";
+import userModel from "../models/user.model.js";
+import messageModel from "../models/message.model.js";
+import cloudnary from "../libs/cloudnary.js";
+import { getReceiverSocketId, io } from "../libs/socket.js";
 
 export const getUserForSidebar: RequestHandler = async (req, res, next) => {
   try {

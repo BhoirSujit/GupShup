@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import valide from "../utils/valide";
+import valide from "../utils/valide.js";
 
 export const connectDB = async () => {
   try {
