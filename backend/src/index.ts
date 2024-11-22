@@ -47,7 +47,7 @@ app.use((error: unknown, req: Request, res: Response, next: NextFunction) => {
   });
 });
 
-if (valide.NODE_ENV == "dev") {
+if (valide.NODE_ENV == "development") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")))
 
   app.get("*", ((req, res) => {
