@@ -7,7 +7,8 @@ interface User {
   _id: string;
   name: string;
   profilePic: string;
-  // Add other fields as needed
+  fullName: string;
+
 }
 
 interface Message {
@@ -16,12 +17,14 @@ interface Message {
   recipientId: string;
   text: string;
   createdAt: string;
-  // Add other fields as needed
+  image: string;
+
 }
 
 interface MessageData {
   text: string;
-  // Add other fields as needed for sending a message
+  image: string | null;
+
 }
 
 interface ChatStore {
@@ -90,19 +93,29 @@ export const useChatStore = create<ChatStore>((set, get) => ({
   subscribeToMessages: () => {
     const { selectedUser } = get();
     if (!selectedUser) return;
-
+  
     const socket = useAuthStore.getState().socket;
-
+    if (!socket) {
+      console.error("Socket is not connected");
+      return;
+    }
+  
     socket.on("newMessage", (newMessage: Message) => {
       if (newMessage.senderId !== selectedUser._id) return;
       set({ messages: [...get().messages, newMessage] });
     });
   },
-
+  
   unsubscribeFromMessages: () => {
     const socket = useAuthStore.getState().socket;
+    if (!socket) {
+      console.error("Socket is not connected");
+      return;
+    }
+  
     socket.off("newMessage");
   },
+  
 
   setSelectedUser: (selectedUser: User | null) => set({ selectedUser }),
 }));
