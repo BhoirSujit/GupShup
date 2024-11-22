@@ -10,8 +10,8 @@ import { Response, Request, NextFunction } from "express";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import {app, server} from "./libs/socket"
 
-const app = express();
 
 const PORT = valide.PORT;
 
@@ -45,7 +45,7 @@ app.use((error: unknown, req: Request, res: Response, next: NextFunction) => {
   });
 });
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   connectDB();
   console.log("Server is running on port ", PORT);
 });

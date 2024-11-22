@@ -2,6 +2,7 @@ import { RequestHandler } from "express";
 import userModel from "../models/user.model";
 import messageModel from "../models/message.model";
 import cloudnary from "../libs/cloudnary";
+import { getReceiverSocketId, io } from "../libs/socket";
 
 export const getUserForSidebar: RequestHandler = async (req, res, next) => {
   try {
@@ -56,7 +57,11 @@ export const sendMessage: RequestHandler = async (req, res, next) => {
 
     await newMessage.save();
 
-    //todo : realtime functionality goes here => socket.io
+ 
+    const receiverSocketId = getReceiverSocketId(receiverId);
+    if(receiverSocketId) {
+      io.to(receiverSocketId).emit("newMessage", newMessage);
+    }
 
     res.status(201).json(newMessage);
   } catch (error) {
