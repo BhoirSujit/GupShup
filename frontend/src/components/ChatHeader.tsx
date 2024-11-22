@@ -1,5 +1,4 @@
 import { X } from 'lucide-react';
-import React from 'react'
 import { useAuthStore } from '../stores/useAuthStore';
 import { useChatStore } from '../stores/useChatStore';
 
@@ -14,15 +13,15 @@ const ChatHeader = () => {
           {/* Avatar */}
           <div className="avatar">
             <div className="size-10 rounded-full relative">
-              <img src={selectedUser.profilePic || "/avatar.png"} alt={selectedUser.fullName} />
+              <img src={selectedUser?.profilePic || "/avatar.png"} alt={selectedUser?.fullName} />
             </div>
           </div>
 
           {/* User info */}
           <div>
-            <h3 className="font-medium">{selectedUser.fullName}</h3>
+            <h3 className="font-medium">{selectedUser?.fullName}</h3>
             <p className="text-sm text-base-content/70">
-              {onlineUsers.includes(selectedUser._id) ? "Online" : "Offline"}
+              {onlineUsers.includes(selectedUser!._id) ? "Online" : "Offline"}
             </p>
           </div>
         </div>

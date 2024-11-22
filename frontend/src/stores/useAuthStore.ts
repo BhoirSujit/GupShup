@@ -3,18 +3,20 @@ import { axiosInstance } from "../libs/axios";
 import toast from "react-hot-toast";
 import { io, Socket } from "socket.io-client";
 
-const BASE_URL = "http://localhost:5001";
+const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5001" : "/";
 
 interface AuthUser {
   _id: string;
   name: string;
   email: string;
   profilePic: string;
+  fullName: string;
+  createdAt?: string;
 
 }
 
-interface SignupData {
-  name: string;
+export interface SignupData {
+  fullName: string;
   email: string;
   password: string;
 
@@ -27,7 +29,9 @@ interface LoginData {
 
 interface UpdateProfileData {
   name?: string;
+  fullName?: string,
   email?: string;
+  profilePic: string;
 
 }
 

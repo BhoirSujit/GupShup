@@ -11,9 +11,11 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import {app, server} from "./libs/socket"
+import path from "path";
 
 
 const PORT = valide.PORT;
+const __dirname = path.resolve();
 
 //middlewares
 app.use(express.json());
@@ -44,6 +46,14 @@ app.use((error: unknown, req: Request, res: Response, next: NextFunction) => {
     error: message,
   });
 });
+
+if (valide.NODE_ENV == "dev") {
+  app.use(express.static(path.join(__dirname, "../frontend/dist")))
+
+  app.get("*", ((req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+  }))
+}
 
 server.listen(PORT, () => {
   connectDB();

@@ -1,5 +1,5 @@
-import React, { FormEvent, useState } from 'react'
-import { useAuthStore } from '../stores/useAuthStore';
+import  {  FormEvent, useState } from 'react'
+import { SignupData, useAuthStore } from '../stores/useAuthStore';
 import {Mail, MessageSquare, User, Lock, EyeOff, Loader2, Eye} from "lucide-react"
 import { Link } from 'react-router-dom';
 import AuthImagePattern from '../components/AuthImagePattern';
@@ -9,7 +9,7 @@ const SignUpPage = () => {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<SignupData>({
     fullName: "",
     email: "",
     password: "",
@@ -27,7 +27,7 @@ const SignUpPage = () => {
     return true;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
     const success = validateForm();
